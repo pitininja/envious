@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "env": {
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "tsconfig.json"
+    },
+    "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+    "rules": {
+        "@typescript-eslint/lines-between-class-members": [
+            "error",
+            "always",
+            {
+                "exceptAfterSingleLine": true
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "lines-between-class-members": "off",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "radix": "off"
+    }
+}

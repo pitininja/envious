@@ -1,0 +1,36 @@
+{
+    "name": "@pitininja/envious",
+    "version": "1.0.1",
+    "license": "AGPL-3.0-or-later",
+    "homepage": "https://github.com/pitininja/envious",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pitininja/envious"
+    },
+    "scripts": {
+        "prepare": "[ -d '.husky' ] && husky install || true",
+        "build": "tsc --build --clean tsconfig.json && tsc --module commonjs",
+        "lint": "npx eslint . --ext=.js,.ts --max-warnings=0 && npx prettier --check . && npx tsc --noEmit",
+        "format": "npx eslint . --fix --ext=.js,.ts --max-warnings=0 && npx prettier --write . && npx tsc --noEmit"
+    },
+    "types": "./dist/index.d.ts",
+    "main": "./dist/index.js",
+    "dependencies": {
+        "@sinclair/typebox": "^0.29.4",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "@tsconfig/recommended": "^1.0.2",
+        "@types/node": "^20.4.2",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.45.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.1.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-import": "^2.27.5",
+        "husky": "^8.0.3",
+        "prettier": "^3.0.0",
+        "typescript": "^5.1.6"
+    }
+}
