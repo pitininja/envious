@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.envious = void 0;
 require("dotenv/config");
-const value_1 = require("@sinclair/typebox/value");
 const os_1 = __importDefault(require("os"));
+const value_1 = require("@sinclair/typebox/value");
 const envious = (schema) => {
     const parsed = value_1.Value.Convert(schema, process.env);
     const errors = [...value_1.Value.Errors(schema, parsed)];

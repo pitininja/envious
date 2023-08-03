@@ -1,7 +1,7 @@
 import 'dotenv/config';
+import Os from 'os';
 import { Static, TSchema } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
-import Os from 'os';
 
 export const envious = <T extends TSchema>(schema: T): Static<T> => {
     const parsed = Value.Convert(schema, process.env);
