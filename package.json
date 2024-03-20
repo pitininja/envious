@@ -1,6 +1,6 @@
 {
     "name": "@pitininja/envious",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
@@ -16,21 +16,21 @@
     "types": "./dist/index.d.ts",
     "main": "./dist/index.js",
     "dependencies": {
-        "@sinclair/typebox": "^0.32.14",
-        "dotenv": "^16.4.3"
+        "@sinclair/typebox": "^0.32.17",
+        "dotenv": "^16.4.5"
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.3",
-        "@types/node": "^20.11.17",
-        "@typescript-eslint/eslint-plugin": "^6.21.0",
-        "@typescript-eslint/parser": "^6.21.0",
-        "eslint": "^8.56.0",
+        "@types/node": "^20.11.30",
+        "@typescript-eslint/eslint-plugin": "^7.3.1",
+        "@typescript-eslint/parser": "^7.3.1",
+        "eslint": "^8.57.0",
         "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-config-airbnb-typescript": "^17.1.0",
+        "eslint-config-airbnb-typescript": "^18.0.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.29.1",
-        "husky": "^9.0.10",
+        "husky": "^9.0.11",
         "prettier": "^3.2.5",
-        "typescript": "^5.3.3"
+        "typescript": "^5.4.2"
     }
 }
