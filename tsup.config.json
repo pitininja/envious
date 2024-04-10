@@ -5,6 +5,7 @@
     "format": ["esm", "cjs"],
     "target": "esnext",
     "splitting": false,
+    "treeshake": true,
     "sourcemap": true,
     "clean": true,
     "dts": true
