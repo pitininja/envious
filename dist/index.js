@@ -1,7 +1,8 @@
+import 'dotenv/config';
+import { Value } from '@sinclair/typebox/value';
+import Os from 'os';
+
 // src/index.ts
-import "dotenv/config";
-import { Value } from "@sinclair/typebox/value";
-import Os from "os";
 var envious = (schema, defaultValues) => {
   const parsed = Value.Convert(schema, process.env);
   const errors = [...Value.Errors(schema, parsed)];
@@ -34,7 +35,7 @@ var envious = (schema, defaultValues) => {
     ...env
   };
 };
-export {
-  envious
-};
+
+export { envious };
+//# sourceMappingURL=out.js.map
 //# sourceMappingURL=index.js.map

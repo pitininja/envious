@@ -1,6 +1,6 @@
 {
     "name": "@pitininja/envious",
-    "version": "3.0.0-beta",
+    "version": "3.0.0-beta.1",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
@@ -16,10 +16,12 @@
         "./README.md"
     ],
     "exports": {
-        "default": "./dist/index.js",
-        "import": "./dist/index.js",
-        "require": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
+        "./package.json": "./package.json",
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
+        }
     },
     "scripts": {
         "prepare": "[ -d '.husky' ] && husky || true",
