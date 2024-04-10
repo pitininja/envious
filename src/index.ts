@@ -5,7 +5,7 @@ import Os from 'os';
 
 export const envious = <T extends TObject>(
     schema: T,
-    defaultValues?: Static<T>
+    defaultValues?: Partial<Static<T>>
 ): Static<T> => {
     const parsed = Value.Convert(schema, process.env);
     const errors = [...Value.Errors(schema, parsed)];

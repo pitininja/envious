@@ -1,14 +1,10 @@
 {
     "extends": "@tsconfig/recommended/tsconfig.json",
-    "ts-node": {
-        "transpileOnly": true,
-        "files": true
-    },
     "compilerOptions": {
         "outDir": "./dist",
         "target": "ESNext",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
         "declaration": true,
         "sourceMap": true,
         "strict": true,
