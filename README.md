@@ -2,10 +2,6 @@
 
 > Environment variable parsing using Dotenv & Typebox
 
-## Compatibility
-
-Since v3 this library is compatible with both ESM and CJS.
-
 ## Install
 
 ```shell

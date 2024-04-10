@@ -1,6 +1,6 @@
 {
     "name": "@pitininja/envious",
-    "version": "3.0.0-beta",
+    "version": "3.0.0-beta.3",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
@@ -12,18 +12,14 @@
         "./dist",
         "./LICENSE",
         "./package.json",
-        "./package-lock.json",
         "./README.md"
     ],
-    "exports": {
-        "default": "./dist/index.js",
-        "import": "./dist/index.js",
-        "require": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
-    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "scripts": {
         "prepare": "[ -d '.husky' ] && husky || true",
-        "build": "tsup",
+        "build": "tsc --build --clean tsconfig.build.json && tsc -b ./tsconfig.build.json",
+        "build:clean": " ",
         "lint": "npx eslint . --ext=.js,.ts --max-warnings=0 && npx prettier --check . && npx tsc --noEmit",
         "format": "npx eslint . --fix --ext=.js,.ts --max-warnings=0 && npx prettier --write . && npx tsc --noEmit"
     },
