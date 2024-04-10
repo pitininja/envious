@@ -1,15 +1,16 @@
 {
     "name": "@pitininja/envious",
-    "version": "1.0.7",
+    "version": "2.0.0",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
         "type": "git",
         "url": "https://github.com/pitininja/envious"
     },
+    "type": "module",
     "scripts": {
         "prepare": "[ -d '.husky' ] && husky || true",
-        "build": "tsc --build --clean tsconfig.json && tsc --module commonjs",
+        "build": "tsc --build --clean tsconfig.json && tsc --project tsconfig.json",
         "lint": "npx eslint . --ext=.js,.ts --max-warnings=0 && npx prettier --check . && npx tsc --noEmit",
         "format": "npx eslint . --fix --ext=.js,.ts --max-warnings=0 && npx prettier --write . && npx tsc --noEmit"
     },

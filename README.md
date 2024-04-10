@@ -2,6 +2,10 @@
 
 > Environment variable parsing using Dotenv & Typebox
 
+## Warning ⚠️
+
+From v2 this library is shipped in ESM. If your project is setup in CJS you must use v1.
+
 ## Install
 
 ```shell

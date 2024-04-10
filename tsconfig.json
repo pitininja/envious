@@ -6,8 +6,9 @@
     },
     "compilerOptions": {
         "outDir": "dist",
-        "target": "esnext",
-        "moduleResolution": "node",
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "declaration": true,
         "sourceMap": true,
         "strict": true,
