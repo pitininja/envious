@@ -1,9 +1,12 @@
 import 'dotenv/config';
-import Os from 'os';
-import { type Static, type TSchema } from '@sinclair/typebox';
+import { type TObject, type Static } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
+import Os from 'os';
 
-export const envious = <T extends TSchema>(schema: T): Static<T> => {
+export const envious = <T extends TObject>(
+    schema: T,
+    defaultValues?: Static<T>
+): Static<T> => {
     const parsed = Value.Convert(schema, process.env);
     const errors = [...Value.Errors(schema, parsed)];
     if (errors.length) {
@@ -23,11 +26,15 @@ export const envious = <T extends TSchema>(schema: T): Static<T> => {
         ];
         throw new Error(errorTextParts.join(Os.EOL));
     }
-    return Value.Cast(
+    const env = Value.Cast(
         {
             ...schema,
             additionalProperties: false
         },
         parsed
     );
+    return {
+        ...defaultValues,
+        ...env
+    };
 };

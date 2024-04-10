@@ -2,9 +2,9 @@
 
 > Environment variable parsing using Dotenv & Typebox
 
-## Warning ⚠️
+## Compatibility
 
-From v2 this library is shipped in ESM. If your project is setup in CJS you must use v1.
+Since v3 this library is compatible with both ESM and CJS.
 
 ## Install
 
@@ -21,7 +21,7 @@ npm i @pitininja/envious
 import { Type } from '@sinclair/typebox';
 import { envious } from '@pitininja/envious';
 
-export const envSchema = Type.Object({
+export const schema = Type.Object({
     STRING_VAR: Type.String(),
     NUMBER_VAR: Type.Integer(),
     BOOLEAN_VAR: Type.Boolean(),
@@ -29,8 +29,18 @@ export const envSchema = Type.Object({
 });
 
 /**
-Parse your environment variables
-If the environment variables don't match the schema, an error will be thrown
+Parse your environment variables.
+If the environment variables don't match the schema, an error will be thrown.
 */
-const env = envious(myEnvSchema);
+const env = envious(schema);
+
+/**
+You can provide default values as second parameter of the envious function.
+*/
+const envWithDefaults = envious(schema, {
+    STRING_VAR: 'Example',
+    NUMBER_VAR: 123,
+    BOOLEAN_VAR: true,
+    OPTIONAL_VAR: 'Example'
+});
 ```

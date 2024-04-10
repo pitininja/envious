@@ -5,7 +5,7 @@
         "files": true
     },
     "compilerOptions": {
-        "outDir": "dist",
+        "outDir": "./dist",
         "target": "ESNext",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
