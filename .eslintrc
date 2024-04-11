@@ -13,7 +13,6 @@
             "prefer": "type-imports",
             "fixStyle": "inline-type-imports"
         }],
-        "@typescript-eslint/lines-between-class-members": "off",
         "import/no-extraneous-dependencies": [
             "error",
             {
@@ -23,14 +22,6 @@
                 ]
             }
         ],
-        "import/prefer-default-export": "off",
-        "lines-between-class-members": "off",
-        "no-param-reassign": [
-            "error",
-            {
-                "props": false
-            }
-        ],
-        "radix": "off"
+        "import/prefer-default-export": "off"
     }
 }

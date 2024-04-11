@@ -3,12 +3,12 @@
     "compilerOptions": {
         "outDir": "./dist",
         "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "Node",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "declaration": true,
         "sourceMap": true,
         "strict": true,
         "esModuleInterop": true
     },
-    "include": ["src", "tests", "vitest.config.ts"]
+    "include": ["src", "tests", "vitest.config.mts"]
 }
