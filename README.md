@@ -20,7 +20,7 @@ import { envious } from '@pitininja/envious';
 export const schema = Type.Object({
     STRING_VAR: Type.String(),
     NUMBER_VAR: Type.Integer(),
-    BOOLEAN_VAR: Type.Boolean(),
+    BOOLEAN_VAR_WITH_DEFAULT: Type.Boolean({ default: false }),
     OPTIONAL_VAR: Type.Optional(Type.String())
 });
 
@@ -29,14 +29,3 @@ Parse your environment variables.
 If the environment variables don't match the schema, an error will be thrown.
 */
 const env = envious(schema);
-
-/**
-You can provide default values as second parameter of the envious function.
-*/
-const envWithDefaults = envious(schema, {
-    STRING_VAR: 'Example',
-    NUMBER_VAR: 123,
-    BOOLEAN_VAR: true,
-    OPTIONAL_VAR: 'Example'
-});
-```

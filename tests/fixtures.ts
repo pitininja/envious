@@ -2,7 +2,6 @@ import { type TestEnv } from './schema';
 
 type TestData = {
     env: Record<string, string>;
-    defaultValues?: Partial<TestEnv>;
 } & (
     | {
           isValid: true;
@@ -28,33 +27,32 @@ export const testData: TestData[] = [
             STRING: 'test',
             LITERALS: 'a',
             INTEGER: 123,
-            BOOLEAN: true
+            BOOLEAN: true,
+            DEFAULT_STRING: 'test',
+            DEFAULT_NUMBER: 123,
+            DEFAULT_BOOLEAN: true
         }
     },
-    // with defaults
+    // valid (with overwritten default values)
     {
         env: {
-            STRING: 'notdefault',
-            LITERALS: 'b',
-            INTEGER: '456',
-            BOOLEAN: 'false'
-        },
-        defaultValues: {
-            STRING: 'default',
+            STRING: 'test',
             LITERALS: 'a',
-            INTEGER: 123,
-            BOOLEAN: true,
-            OPTIONAL_STRING: 'string',
-            OPTIONAL_INTEGER: 789
+            INTEGER: '123',
+            BOOLEAN: 'true',
+            DEFAULT_STRING: 'overwritten',
+            DEFAULT_NUMBER: '456',
+            DEFAULT_BOOLEAN: 'false'
         },
         isValid: true,
         expected: {
-            STRING: 'notdefault',
-            LITERALS: 'b',
-            INTEGER: 456,
-            BOOLEAN: false,
-            OPTIONAL_STRING: 'string',
-            OPTIONAL_INTEGER: 789
+            STRING: 'test',
+            LITERALS: 'a',
+            INTEGER: 123,
+            BOOLEAN: true,
+            DEFAULT_STRING: 'overwritten',
+            DEFAULT_NUMBER: 456,
+            DEFAULT_BOOLEAN: false
         }
     },
     // missing variable

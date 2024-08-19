@@ -3,10 +3,7 @@ import { type TObject, type Static } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
 import Os from 'os';
 
-export const envious = <T extends TObject>(
-    schema: T,
-    defaultValues?: Partial<Static<T>>
-): Static<T> => {
+export const envious = <T extends TObject>(schema: T): Static<T> => {
     const parsed = Value.Parse(schema, process.env);
     const errors = [...Value.Errors(schema, parsed)];
     if (errors.length) {
@@ -26,15 +23,11 @@ export const envious = <T extends TObject>(
         ];
         throw new Error(errorTextParts.join(Os.EOL));
     }
-    const env = Value.Cast(
+    return Value.Cast(
         {
             ...schema,
             additionalProperties: false
         },
         parsed
     );
-    return {
-        ...defaultValues,
-        ...env
-    };
 };

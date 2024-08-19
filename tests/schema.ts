@@ -6,7 +6,10 @@ export const testSchema = Type.Object({
     INTEGER: Type.Integer(),
     BOOLEAN: Type.Boolean(),
     OPTIONAL_STRING: Type.Optional(Type.String()),
-    OPTIONAL_INTEGER: Type.Optional(Type.Integer())
+    OPTIONAL_INTEGER: Type.Optional(Type.Integer()),
+    DEFAULT_STRING: Type.String({ default: 'test' }),
+    DEFAULT_NUMBER: Type.Integer({ default: 123 }),
+    DEFAULT_BOOLEAN: Type.Boolean({ default: true })
 });
 
 export type TestEnv = Static<typeof testSchema>;
