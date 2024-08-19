@@ -7,7 +7,7 @@ export const envious = <T extends TObject>(
     schema: T,
     defaultValues?: Partial<Static<T>>
 ): Static<T> => {
-    const parsed = Value.Convert(schema, process.env);
+    const parsed = Value.Parse(schema, process.env);
     const errors = [...Value.Errors(schema, parsed)];
     if (errors.length) {
         const computedErrorMessages: Record<string, string[]> = {};
