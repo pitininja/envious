@@ -8,7 +8,7 @@ require("dotenv/config");
 const value_1 = require("@sinclair/typebox/value");
 const os_1 = __importDefault(require("os"));
 const envious = (schema, defaultValues) => {
-    const parsed = value_1.Value.Convert(schema, process.env);
+    const parsed = value_1.Value.Parse(schema, process.env);
     const errors = [...value_1.Value.Errors(schema, parsed)];
     if (errors.length) {
         const computedErrorMessages = {};
