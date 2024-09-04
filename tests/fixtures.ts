@@ -1,4 +1,4 @@
-import { type TestEnv } from './schema';
+import type { TestEnv } from './schema';
 
 type TestData = {
     env: Record<string, string>;

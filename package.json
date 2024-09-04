@@ -1,46 +1,32 @@
 {
     "name": "@pitininja/envious",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
         "type": "git",
         "url": "https://github.com/pitininja/envious"
     },
-    "files": [
-        "./dist",
-        "./LICENSE",
-        "./package.json",
-        "./README.md"
-    ],
+    "files": ["./dist", "./LICENSE", "./package.json", "./README.md"],
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
         "prepare": "[ -d '.husky' ] && husky || true",
         "build": "tsc --build --clean tsconfig.build.json && tsc -b ./tsconfig.build.json",
-        "build:clean": " ",
-        "lint": "npx eslint . --ext=.js,.ts --max-warnings=0 && npx prettier --check . && npx tsc --noEmit",
-        "format": "npx eslint . --fix --ext=.js,.ts --max-warnings=0 && npx prettier --write . && npx tsc --noEmit",
-        "test": "vitest --run"
+        "test": "vitest --run",
+        "lint": "npx @biomejs/biome check --error-on-warnings && npx tsc --noEmit",
+        "format": "npx @biomejs/biome check --write --error-on-warnings && npx tsc --noEmit"
     },
     "dependencies": {
-        "@sinclair/typebox": "^0.33.7",
+        "@sinclair/typebox": "^0.33.9",
         "dotenv": "^16.4.5"
     },
     "devDependencies": {
+        "@biomejs/biome": "^1.8.3",
         "@tsconfig/recommended": "^1.0.7",
-        "@types/node": "^22.4.1",
-        "@typescript-eslint/eslint-plugin": "^7.17.0",
-        "@typescript-eslint/parser": "^7.17.0",
+        "@types/node": "^22.5.3",
         "@vitest/coverage-istanbul": "^2.0.5",
-        "eslint": "^8.57.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-config-airbnb-typescript": "^18.0.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-import": "^2.29.1",
-        "husky": "^9.1.4",
-        "prettier": "^3.3.3",
-        "tsup": "^8.2.4",
+        "husky": "^9.1.5",
         "typescript": "^5.5.4",
         "vitest": "^2.0.5"
     }

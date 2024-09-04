@@ -1,20 +1,20 @@
 import 'dotenv/config';
-import { type TObject, type Static } from '@sinclair/typebox';
+import Os from 'node:os';
+import type { Static, TObject } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
-import Os from 'os';
 
 export const envious = <T extends TObject>(schema: T): Static<T> => {
     const parsed = Value.Parse(schema, process.env);
     const errors = [...Value.Errors(schema, parsed)];
     if (errors.length) {
         const computedErrorMessages: Record<string, string[]> = {};
-        errors.forEach(({ path, message }) => {
+        for (const { path, message } of errors) {
             const envVarName = path.replace(/^\//, '');
             if (!computedErrorMessages[envVarName]) {
                 computedErrorMessages[envVarName] = [];
             }
             computedErrorMessages[envVarName].push(message);
-        });
+        }
         const errorTextParts: string[] = [
             'Invalid environment variables',
             ...Object.entries(computedErrorMessages).map(

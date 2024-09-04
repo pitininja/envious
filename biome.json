@@ -1,0 +1,63 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+    "files": {
+        "ignore": [".husky/*", "dist/*", "node_modules/*"]
+    },
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf"
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "correctness": {
+                "noNewSymbol": "error",
+                "noUnusedImports": "error",
+                "noUnusedPrivateClassMembers": "error",
+                "noUnusedVariables": "error",
+                "useArrayLiterals": "error"
+            },
+            "style": {
+                "noDefaultExport": "error",
+                "noNegationElse": "error",
+                "useBlockStatements": "error",
+                "useCollapsedElseIf": "error",
+                "useImportType": "error"
+            },
+            "nursery": {
+                "noConsole": "error"
+            },
+            "suspicious": {
+                "noEmptyBlockStatements": "error",
+                "useAwait": "error"
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+            "trailingCommas": "none"
+        }
+    },
+    "overrides": [
+        {
+            "include": ["*.md", "*.yml", "*.yaml"],
+            "formatter": {
+                "indentWidth": 2
+            }
+        },
+        {
+            "include": ["vitest.config.mts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noDefaultExport": "off"
+                    }
+                }
+            }
+        }
+    ]
+}
