@@ -1,5 +1,5 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+    "$schema": "https://biomejs.dev/schemas/1.9.2/schema.json",
     "files": {
         "ignore": [".husky/*", "dist/*", "node_modules/*"]
     },
@@ -27,10 +27,8 @@
                 "useCollapsedElseIf": "error",
                 "useImportType": "error"
             },
-            "nursery": {
-                "noConsole": "error"
-            },
             "suspicious": {
+                "noConsole": "error",
                 "noEmptyBlockStatements": "error",
                 "useAwait": "error"
             }
