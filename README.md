@@ -29,3 +29,4 @@ Parse your environment variables.
 If the environment variables don't match the schema, an error will be thrown.
 */
 const env = envious(schema);
+```
