@@ -1,7 +1,7 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import { envious } from '../src/index.js';
-import { testData } from './fixtures.js';
+import { EnviousError, envious } from '../src/index.js';
+import { testData, testFormats } from './fixtures.js';
 import { testSchema } from './schema.js';
 
 describe('Envious', () => {
@@ -12,10 +12,12 @@ describe('Envious', () => {
                 vi.stubEnv(name, value);
             }
             if (isValid) {
-                const result = envious(testSchema);
+                const result = envious(testSchema, { formats: testFormats });
                 expect(result).toEqual(expected);
             } else {
-                expect(() => envious(testSchema)).toThrow();
+                expect(() =>
+                    envious(testSchema, { formats: testFormats })
+                ).toThrow(EnviousError);
             }
         }
     });

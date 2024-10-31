@@ -1,7 +1,13 @@
+import type { EnviousFormats } from '../src';
 import type { TestEnv } from './schema';
+
+export const testFormats: EnviousFormats = {
+    email: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i
+};
 
 type TestData = {
     env: Record<string, string>;
+    formats?: EnviousFormats;
 } & (
     | {
           isValid: true;
@@ -18,6 +24,7 @@ export const testData: TestData[] = [
     {
         env: {
             STRING: 'test',
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'a',
             INTEGER: '123',
             BOOLEAN: 'true'
@@ -25,6 +32,7 @@ export const testData: TestData[] = [
         isValid: true,
         expected: {
             STRING: 'test',
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'a',
             INTEGER: 123,
             BOOLEAN: true,
@@ -37,6 +45,7 @@ export const testData: TestData[] = [
     {
         env: {
             STRING: 'test',
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'a',
             INTEGER: '123',
             BOOLEAN: 'true',
@@ -47,6 +56,7 @@ export const testData: TestData[] = [
         isValid: true,
         expected: {
             STRING: 'test',
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'a',
             INTEGER: 123,
             BOOLEAN: true,
@@ -58,6 +68,7 @@ export const testData: TestData[] = [
     // missing variable
     {
         env: {
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'a',
             INTEGER: '123',
             BOOLEAN: 'true'
@@ -68,7 +79,19 @@ export const testData: TestData[] = [
     {
         env: {
             STRING: 'test',
+            STRING_FORMAT: 'test@email.com',
             LITERALS: 'invalid',
+            INTEGER: '123',
+            BOOLEAN: 'true'
+        },
+        isValid: false
+    },
+    // invalid string format
+    {
+        env: {
+            STRING: 'test',
+            STRING_FORMAT: 'invalid',
+            LITERALS: 'a',
             INTEGER: '123',
             BOOLEAN: 'true'
         },
