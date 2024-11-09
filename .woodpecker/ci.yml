@@ -1,0 +1,20 @@
+when:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
+
+steps:
+- name: install
+  image: node:22-alpine
+  pull: true
+  commands:
+  - npm i
+- name: lint
+  image: node:22-alpine
+  pull: true
+  commands:
+  - npm run lint
+  depends_on:
+  - install
