@@ -1,6 +1,6 @@
 {
     "name": "@pitininja/envious",
-    "version": "4.1.4",
+    "version": "4.1.5",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
@@ -18,16 +18,16 @@
         "format": "npx @biomejs/biome check --write --error-on-warnings && npx tsc --noEmit"
     },
     "dependencies": {
-        "@sinclair/typebox": "^0.34.7",
+        "@sinclair/typebox": "^0.34.8",
         "dotenv": "^16.4.5"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
         "@tsconfig/recommended": "^1.0.8",
-        "@types/node": "^22.9.1",
+        "@types/node": "^22.9.3",
         "@vitest/coverage-istanbul": "^2.1.5",
         "husky": "^9.1.7",
-        "typescript": "^5.6.3",
+        "typescript": "^5.7.2",
         "vitest": "^2.1.5"
     }
 }
