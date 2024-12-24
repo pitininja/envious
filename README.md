@@ -1,6 +1,6 @@
 # Envious
 
-> Environment variable parsing using Dotenv & Typebox
+> Environment variable parsing using Typebox
 
 ## Install
 
@@ -9,8 +9,6 @@ npm i @pitininja/envious
 ```
 
 ## Usage
-
-Environment variables are automatically loaded using [Dotenv](https://github.com/motdotla/dotenv).
 
 Refer to the [official Typebox documentation](https://github.com/sinclairzx81/typebox) for how to write a Typebox schema.
 
@@ -26,6 +24,15 @@ const env = envious(
         OPTIONAL_VAR: Type.Optional(Type.String())
     })
 );
+```
+
+Previously [dotenv](https://github.com/motdotla/dotenv) was used to load environment variables. This is not longer the case in v5, since environment variables can be natively loaded with Node.js / TSX / Vitest / etc.
+
+```shell
+# Example loading environment variables with Node.js
+node --env-file=.env index.js
+# Example loading environment variables with TSX
+tsx --env-file=.env index.ts
 ```
 
 ## Formats

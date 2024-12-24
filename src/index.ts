@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { FormatRegistry, type Static, type TObject } from '@sinclair/typebox';
 import { AssertError, Value, type ValueError } from '@sinclair/typebox/value';
 
