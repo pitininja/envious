@@ -36,8 +36,11 @@ export const envious = <T extends TObject>(
         if (options?.formats) {
             setFormats(options.formats);
         }
-        const parsed = Value.Parse(schema, process.env);
-        const errors = [...Value.Errors(schema, parsed)];
+        const env = Value.Clone(process.env);
+        const cleaned = Value.Clean(schema, env);
+        const defaulted = Value.Default(schema, cleaned);
+        const converted = Value.Convert(schema, defaulted);
+        const errors = [...Value.Errors(schema, converted)];
         if (errors.length) {
             throw new EnviousError(invalidEnvVarMessage, errors);
         }
@@ -46,7 +49,7 @@ export const envious = <T extends TObject>(
                 ...schema,
                 additionalProperties: false
             },
-            parsed
+            converted
         );
     } catch (err: unknown) {
         if (err instanceof EnviousError) {
