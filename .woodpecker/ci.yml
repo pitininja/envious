@@ -18,3 +18,10 @@ steps:
   - npm run lint
   depends_on:
   - install
+- name: test
+  image: node:22-alpine
+  pull: true
+  commands:
+  - npm run test
+  depends_on:
+  - install
