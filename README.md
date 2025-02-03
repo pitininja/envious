@@ -2,6 +2,12 @@
 
 > Environment variable parsing using Typebox
 
+- [Install](#install)
+- [Usage](#usage)
+- [Formats](#formats)
+- [Errors](#errors)
+- [Logging](#logging)
+
 ## Install
 
 ```shell
@@ -82,4 +88,41 @@ try {
         console.log('Errors:', err.errors); // Typebox's ValueError array
     }
 }
+```
+
+## Logging
+
+In addition to throwing an `EnviousError`, errors can be logged in the console. To do so, use the `logErrors` option :
+
+```typescript
+import { envious, EnviousError } from '@pitininja/envious';
+import { Type } from '@sinclair/typebox';
+
+const env = envious(
+    Type.Object({
+        STRING_VAR: Type.String()
+    }),
+    {
+        logErrors: true
+    }
+);
+```
+
+You can also provide your own logging function :
+
+```typescript
+import { envious, EnviousError } from '@pitininja/envious';
+import { Type } from '@sinclair/typebox';
+
+const env = envious(
+    Type.Object({
+        STRING_VAR: Type.String()
+    }),
+    {
+        logErrors: true,
+        logger: (message) => {
+            myCustomLogger(message)
+        }
+    }
+);
 ```
