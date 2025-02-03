@@ -6,7 +6,9 @@ export type EnviousFormats = {
 };
 
 export type EnviousOptions = {
-    formats: EnviousFormats;
+    formats?: EnviousFormats;
+    logErrors?: boolean;
+    logger?: (message: string) => void;
 };
 
 export class EnviousError extends Error {
@@ -27,14 +29,34 @@ const setFormats = (formats: EnviousFormats) => {
     }
 };
 
+const logValidationErrors = (
+    errors: ValueError[],
+    logger?: (message: string) => void
+) => {
+    const log = logger ?? console.error;
+    log('Envious validation failed :');
+    const validationErrorsMap = new Map<string, string[]>();
+    for (const { path, message } of errors) {
+        const envVarName = path.replace(/^\//, '');
+        const errorMessages = validationErrorsMap.get(envVarName);
+        validationErrorsMap.set(envVarName, [
+            ...(errorMessages ?? []),
+            message
+        ]);
+    }
+    for (const [name, messages] of validationErrorsMap.entries()) {
+        log(`  - ${name} : ${messages.join(', ')}`);
+    }
+};
+
 export const envious = <T extends TObject>(
     schema: T,
-    options?: EnviousOptions
+    { formats, logErrors, logger }: EnviousOptions = {}
 ): Static<T> => {
     const invalidEnvVarMessage = 'Invalid environment variables';
     try {
-        if (options?.formats) {
-            setFormats(options.formats);
+        if (formats) {
+            setFormats(formats);
         }
         const env = Value.Clone(process.env);
         const cleaned = Value.Clean(schema, env);
@@ -42,6 +64,9 @@ export const envious = <T extends TObject>(
         const converted = Value.Convert(schema, defaulted);
         const errors = [...Value.Errors(schema, converted)];
         if (errors.length) {
+            if (logErrors) {
+                logValidationErrors(errors, logger);
+            }
             throw new EnviousError(invalidEnvVarMessage, errors);
         }
         return Value.Cast(

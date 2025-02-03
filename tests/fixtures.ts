@@ -12,10 +12,12 @@ type TestData = {
     | {
           isValid: true;
           expected: TestEnv;
+          errorCount?: never;
       }
     | {
           isValid: false;
           expected?: never;
+          errorCount: number;
       }
 );
 
@@ -73,7 +75,8 @@ export const testData: TestData[] = [
             INTEGER: '123',
             BOOLEAN: 'true'
         },
-        isValid: false
+        isValid: false,
+        errorCount: 1
     },
     // invalid value
     {
@@ -84,7 +87,8 @@ export const testData: TestData[] = [
             INTEGER: '123',
             BOOLEAN: 'true'
         },
-        isValid: false
+        isValid: false,
+        errorCount: 1
     },
     // invalid string format
     {
@@ -95,6 +99,18 @@ export const testData: TestData[] = [
             INTEGER: '123',
             BOOLEAN: 'true'
         },
-        isValid: false
+        isValid: false,
+        errorCount: 1
+    },
+    // multiple errors
+    {
+        env: {
+            STRING_FORMAT: 'invalid',
+            LITERALS: 'a',
+            INTEGER: 'invalid',
+            BOOLEAN: 'true'
+        },
+        isValid: false,
+        errorCount: 3
     }
 ];
