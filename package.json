@@ -1,6 +1,6 @@
 {
     "name": "@pitininja/envious",
-    "version": "5.3.11",
+    "version": "5.3.12",
     "license": "AGPL-3.0-or-later",
     "homepage": "https://github.com/pitininja/envious",
     "repository": {
@@ -23,10 +23,10 @@
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",
         "@tsconfig/recommended": "^1.0.8",
-        "@types/node": "^22.14.0",
+        "@types/node": "^22.14.1",
         "@vitest/coverage-istanbul": "^3.1.1",
         "husky": "^9.1.7",
-        "typescript": "^5.8.2",
+        "typescript": "^5.8.3",
         "vitest": "^3.1.1"
     }
 }
